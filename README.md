@@ -16,9 +16,6 @@ https://user-images.githubusercontent.com/3920850/167317372-6165c118-99da-4a31-8
 
 https://user-images.githubusercontent.com/3920850/167317795-63e74576-f0e6-4787-817f-b699e88d10e7.mov
 
-## Writing Tests
-
-https://user-images.githubusercontent.com/3920850/167318157-70692488-b126-47b2-9eab-ee3dc79771e9.mov
 
 ## Installation
 
@@ -116,28 +113,10 @@ be omitted. These snippets will be marked with ✨.
   - [reduce](#reduce)
   - [noop](#noop)
   - [interface](#interface)
-- [JSDoc/TSDoc](#jsdoctsdoc)
-  - [Block Comment](#block-comment)
-  - [@example](#example)
-  - [@defaultValue](#defaultvalue)
-  - [@since](#since)
 - [Logging](#logging)
 - [Importing](#importing)
 - [Exporting](#exporting)
 - [NODE_ENV](#node_env)
-- [Tests](#tests)
-  - [Describe a test](#describe-a-test)
-  - [it should...](#it-should)
-  - [it should (async)...](#it-should-async)
-  - [Test Expect](#test-expect)
-  - [Test Queries ✨](#test-queries-)
-- [React Testing](#react-testing)
-  - [React Test File](#react-test-file)
-  - [React Test File (ESM)](#react-test-file-esm)
-  - [Global Test File](#global-test-file)
-  - [Global Test File (ESM)](#global-test-file-esm)
-  - [User Event Test](#user-event-test)
-  - [waitFor](#waitfor)
 
 * [SCSS Snippets](#scss-snippets)
 * [Contributing](#contributing)
@@ -551,45 +530,6 @@ export interface $CFN_$TABSTOP {
 }
 ```
 
-### JSDoc/TSDoc
-
-#### Block Comment
-
-`/**` ->
-
-```ts
-/**
- * $TABSTOP
- */
-```
-
-#### @example
-
-`@e` ->
-
-```ts
-@example $EXAMPLE_NAME
-\`\`\`$TSX
-$TABSTOP
-\`\`\`
-```
-
-#### @defaultValue
-
-`@d` ->
-
-```ts
-@defaultValue \`$TABSTOP\`
-```
-
-#### @since
-
-`@s` ->
-
-```ts
-@since $MAJOR.$MINOR.$PATCH
-```
-
 ### Logging
 
 | Shortcut | Nane                   | Expands to                              |
@@ -635,162 +575,6 @@ $TABSTOP
 | `dev`    | `process.env.NODE_ENV !== "production"` |
 | `prod`   | `process.env.NODE_ENV === "production"` |
 
-### Tests
-
-#### Describe a test
-
-`desc` ->
-
-```ts
-describe('$CFN', () => {
-  it('should $TABSTOP', () => {
-    $TABSTOP
-  )}
-})
-```
-
-#### it should...
-
-`it` ->
-
-```ts
-it("should $TABSTOP", () => {
-  $TABSTOP
-})
-```
-
-#### it should (async)...
-
-`ita` ->
-
-```ts
-it("should $TABSTOP", async () => {
-  $TABSTOP
-})
-```
-
-#### Test Expect
-
-| Shortcut | Name                | Expands to                                         |
-| -------- | ------------------- | -------------------------------------------------- |
-| `es`     | Expect Snapshot     | `expect(${container}).toMatchSnapshot()`           |
-| `ett`    | Expect To Throw     | `expect(() => $TABSTOP).toThrow()`                 |
-| `entt`   | Expect Not To Throw | `expect(() => $TABSTOP).not.toThrow()`             |
-| `enc`    | Expect Not Called   | `expect($TABSTOP).not.toHaveBeenCalled()`          |
-| `ecw`    | Expect Called With  | `expect($TABSTOP).toHaveBeenCalledWith($TABSTOP)`  |
-| `ect`    | Expect Called Times | `expect($TABSTOP).toHaveBeenCalledTimes($TABSTOP)` |
-
-#### Test Queries ✨
-
-| Shortcut | Name                          | Expands to                                                                    |
-| -------- | ----------------------------- | ----------------------------------------------------------------------------- |
-| `sgbr`   | Screen Get By Role            | `const $TABSTOP = screen.getByRole("${button}", { name: "$TABSTOP" })`        |
-| `sgbru`  | Screen Get By Role (Unnamed)  | `const $TABSTOP = screen.getByRole("${progressbar}")`                         |
-| `sgbi`   | Screen Get By testId          | `const $TABSTOP = screen.getByTestId("$TABSTOP")`                             |
-| `sgbt`   | Screen Get By Text            | `const $TABSTOP = screen.getByText("$TABSTOP")`                               |
-| `sfbr`   | Screen Find By Role           | `const $TABSTOP = await screen.findByRole("${button}", { name: "$TABSTOP" })` |
-| `sfbru`  | Screen Find By Role (Unnamed) | `const $TABSTOP = await screen.findByRole("${progressbar}")`                  |
-| `fbi`    | Screen Find By testId         | `const $TABSTOP = await screen.findByTestId("$TABSTOP")`                      |
-| `fbt`    | Screen Find By Text           | `const $TABSTOP = await screen.findByText("$TABSTOP")`                        |
-| `gbr`    | Get By Role                   | `const $TABSTOP = getByRole("${button}", { name: "$TABSTOP" })`               |
-| `gbru`   | Get By Role (Unnamed)         | `const $TABSTOP = getByRole("${progressbar}")`                                |
-| `gbi`    | Get By testId                 | `const $TABSTOP = getByTestId("$TABSTOP")`                                    |
-| `gbt`    | Get By Text                   | `const $TABSTOP = getByText("$TABSTOP")`                                      |
-| `fbr`    | Find By Role                  | `const $TABSTOP = await findByRole("${button}", { name: "$TABSTOP" })`        |
-| `fbru`   | Find By Role (Unnamed)        | `const $TABSTOP = await findByRole("${progressbar}")`                         |
-| `fbi`    | Find By testId                | `const $TABSTOP = await findByTestId("$TABSTOP")`                             |
-| `fbt`    | Find By Text                  | `const $TABSTOP = await findByText("$TABSTOP")`                               |
-
-### React Testing
-
-#### React Test File
-
-`rtf` ->
-
-```tsx
-import { render, screen, userEvent } from "${@testing-library/react}"
-
-import { $CFN } from "../$CFN"
-
-describe("$CFN", () => {
-  it("should $TABSTOP", () => {
-    $TABSTOP
-  })
-})
-```
-
-#### React Test File (ESM)
-
-`rtfe` ->
-
-```tsx
-import { render, screen, userEvent } from "${@testing-library/react}"
-
-import { $CFN } from "../$CFN.js"
-
-describe("$CFN", () => {
-  it("should $TABSTOP", () => {
-    $TABSTOP
-  })
-})
-```
-
-#### Global Test File
-
-`gtf` ->
-
-```tsx
-import { describe, expect, it } from "${@jest/globals}"
-import { render, screen, userEvent } from "${@testing-library/react}"
-
-import { $CFN } from "../$CFN"
-
-describe("$CFN", () => {
-  it("should $TABSTOP", () => {
-    $TABSTOP
-  })
-})
-```
-
-#### Global Test File (ESM)
-
-`gtfe` ->
-
-```tsx
-import { describe, expect, it } from "${@jest/globals}"
-import { render, screen, userEvent } from "${@testing-library/react}"
-
-import { $CFN } from "../$CFN.js"
-
-describe("$CFN", () => {
-  it("should $TABSTOP", () => {
-    $TABSTOP
-  })
-})
-```
-
-#### User Event Test
-
-`uet` ->
-
-```tsx
-it("should $TABSTOP", async () => {
-  const user = userEvent.setup()
-  $TABSTOP
-
-  expect(true).toBe(true)
-})
-```
-
-#### waitFor
-
-`wf` ->
-
-```tsx
-await waitFor(() => {
-  $TABSTOP
-})
-```
 
 ## SCSS Snippets
 
