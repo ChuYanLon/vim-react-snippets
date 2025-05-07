@@ -177,39 +177,6 @@ local function_component = function(opts)
   )
 end
 
-local server_component = function(opts)
-  local props = opts.props
-  local export = opts.export
-  local default = export == "default"
-  local simple = not props
-
-  --- @type vim-react-snippets.FunctionComponentOptions
-  local shared_opts = {
-    props = props,
-    export = export,
-    server = true,
-    forward = false,
-    typescript = true,
-  }
-  local trig = (simple and "s" or "") .. "sc" .. (default and "d" or "") .. (export and "e" or "")
-  local desc = (simple and "Simple " or "")
-    .. "Server Component "
-    .. (default and "Default " or "")
-    .. (export and "Export" or "")
-  return s(
-    {
-      trig = trig,
-      desc = desc,
-    },
-    util.merge_lists(
-      react_imports(shared_opts),
-      component_props(shared_opts),
-      component_export_line(shared_opts),
-      component_body(shared_opts),
-      { t("}") }
-    )
-  )
-end
 
 --- @param typescript boolean
 local function_components = function(typescript)
@@ -291,40 +258,10 @@ local function_components = function(typescript)
   }
 end
 
-local server_components = function(typescript)
-  if not typescript then
-    return {}
-  end
-
-  return {
-    -- scde
-    server_component({
-      props = true,
-      export = "default",
-    }),
-    -- sscde
-    server_component({
-      props = false,
-      export = "default",
-    }),
-
-    -- sce
-    server_component({
-      props = true,
-      export = true,
-    }),
-    -- ssce
-    server_component({
-      props = false,
-      export = true,
-    }),
-  }
-end
-
 --- @private
 --- @param typescript boolean
 local react_components = function(typescript)
-  return util.merge_lists(function_components(typescript), server_components(typescript))
+  return util.merge_lists(function_components(typescript))
 end
 
 return react_components
